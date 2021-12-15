@@ -1,11 +1,11 @@
-import { Button } from 'antd';
+import { WalletDisconnectButton, WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 
 export const SetupView = () => {
+
   return (
     <>
-      <Button type="primary" className="app-btn">
-        Connect
-      </Button>
+      <WalletMultiButton />
+      <WalletDisconnectButton />
     </>
   )
 }
