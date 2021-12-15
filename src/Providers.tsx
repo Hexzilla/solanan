@@ -1,18 +1,22 @@
 import React from 'react'
 import { HelmetProvider } from 'react-helmet-async'
 import { ThemeProvider } from 'styled-components'
+import { ConnectionProvider } from './contexts/Solana';
 
 const ThemeProviderWrapper = (props: any) => {
-  return <ThemeProvider {...props} />
+  const light = {}
+  return <ThemeProvider theme={light} {...props} />
 }
 
 const Providers: React.FC = ({ children }) => {
   return (
-    <HelmetProvider>
-      <ThemeProviderWrapper>
-        {children}
-      </ThemeProviderWrapper>
-    </HelmetProvider>
+    <ConnectionProvider>
+      <HelmetProvider>
+        <ThemeProviderWrapper>
+          {children}
+        </ThemeProviderWrapper>
+      </HelmetProvider>
+    </ConnectionProvider>
   )
 }
 
