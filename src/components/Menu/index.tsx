@@ -19,7 +19,7 @@ export const Menu = () => {
         <AntMenu.Item key="nfts">
           NFTs
         </AntMenu.Item>
-        <AntMenu.Item key="collection">Collection</AntMenu.Item>
+        <AntMenu.Item key="collections">Collection</AntMenu.Item>
       </SubMenu>
       <SubMenu key="create" icon={<SettingOutlined />} title="Create">
         <AntMenu.Item key="nft">

@@ -1,31 +1,43 @@
-import { Upload, message } from 'antd';
+import { Upload, Image } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
+import { useState } from 'react';
 
 const { Dragger } = Upload;
 
-const props = {
-  name: 'file',
-  accept: '.jpeg,.jpg,.png,.gif',
-  multiple: false,
-  onChange(info: any) {
-    const { status } = info.file;
-    if (status !== 'uploading') {
-      console.log(info.file, info.fileList);
-    }
-    if (status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully.`);
-    } else if (status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
-  onDrop(e: any) {
-    console.log('Dropped files', e.dataTransfer.files);
-  },
-};
+const getBase64 = (file: File) => {
+  return new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = error => reject(error);
+  });
+}
 
-export const ImageUploader = () => {
+export const ImageUploader = (props: any) => {
+  const [file, setFile] = useState(null)
+  const [uri, setUri] = useState<string>('')
+  
+  const onChange = async (info: any) => {
+    setFile(info.file.originFileObj)
+
+    const base64 = await getBase64(info.file.originFileObj)
+    setUri(base64)
+  }
+
+  const onDrop = (e: any) => {
+    console.log('Dropped files', e.dataTransfer.files);
+  }
+
   return (
-    <Dragger {...props}>
+    <Dragger 
+      name={props.name}
+      accept= ".jpeg,.jpg,.png,.gif"
+      multiple={false}
+      showUploadList={false}
+      onChange={onChange}
+      onDrop={onDrop}
+    >
+      { file && <Image width={200} src={uri} preview={false} alt="..." /> }
       <p className="ant-upload-drag-icon">
         <InboxOutlined />
       </p>
