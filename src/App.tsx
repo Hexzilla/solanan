@@ -1,15 +1,9 @@
 import React from 'react';
-import { Providers } from './Providers';
+import { Routes } from './Routes';
 import { HomeView } from './views/Home'
 
 function App() {
-  return (
-    <>
-      <Providers>
-        <HomeView></HomeView>
-      </Providers>
-    </>
-  )
+  return <Routes />
 }
 
 export default App;
