@@ -47,11 +47,11 @@ export const ArtCreateView = () => {
             </div>
             <div className="item-group">
               <LabelQuestion label="Short description" required={true} />
-              <TextArea rows={4} placeholder="e.g. 'It was a beautiful flower'" />
+              <TextArea rows={5} placeholder="e.g. 'It was a beautiful flower'" />
             </div>
             <div className="item-group">
               <LabelQuestion label="Description" required={true} />
-              <TextArea rows={4} placeholder="e.g. 'It was a beautiful flower'" />
+              <TextArea rows={8} placeholder="e.g. 'It was a beautiful flower'" />
             </div>
             <div className="item-group">
               <LabelQuestion label="Royalties from secondary sales" required={true} />

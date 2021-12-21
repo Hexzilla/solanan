@@ -7,7 +7,7 @@ const { Header, Footer, Sider, Content } = Layout;
 
 export const HomeView = () => {
   return (
-    <Layout style={{ margin: 0 }}>
+    <Layout className="container">
       <Header>
         <Menu />
       </Header>

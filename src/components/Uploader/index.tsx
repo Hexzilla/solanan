@@ -38,10 +38,12 @@ export const ImageUploader = (props: any) => {
       onDrop={onDrop}
     >
       { file && <Image width={200} src={uri} preview={false} alt="..." /> }
-      <p className="ant-upload-drag-icon">
-        <InboxOutlined />
-      </p>
-      <p className="ant-upload-text">Click or drag file to this area to upload</p>
+      { !file && 
+        <p className="ant-upload-drag-icon">
+          <InboxOutlined />
+        </p>
+      }
+      <p className="ant-upload-text">Upload Preview</p>
       <p className="ant-upload-hint">
         Supported file formats: .jpeg, .png and .gif
         <br/>
